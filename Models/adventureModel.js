@@ -2,10 +2,10 @@
 
 //hotel model
 module.exports = (sequelize, DataTypes) => {
-  const Hotel = sequelize.define(
-    "hotel",
+  const Adventure = sequelize.define(
+    "adventure",
     {
-      hotelName: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -27,8 +27,13 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.STRING,
         },
       ],
+      openingHours : [
+        {
+            type: DataTypes.STRING,
+          },
+      ],
 
-      amenities: [
+      activities: [
         {
           type: DataTypes.STRING,
         },
@@ -37,5 +42,5 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: true }
   );
 
-  return Hotel;
+  return Adventure;
 };
