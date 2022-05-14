@@ -6,27 +6,27 @@ const dbConfig = require('../Config/db.config')
 
 
 //database connction
-const sequelize =  new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
+    Port: dbConfig.PORT,
     dialect: dbConfig.dialect,
-    pool :{
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle
+    pool: {
+      max: dbConfig.pool.max,
+      min: dbConfig.pool.min,
+      acquire: dbConfig.pool.acquire,
+      idle: dbConfig.pool.idle
     }
-})
+  });
 
 //checking if connection is done
 
+
      sequelize.authenticate().then(() => {
-         console.log("Database connected")
+         console.log(`Database connected to ${dbConfig.DB}`)
      }).catch((err) => {
          console.log(err)
      })
     
-
-
      const db = {}
 
      db.Sequelize = Sequelize
@@ -40,3 +40,4 @@ db.adventure = require('./adventureModel') (sequelize, DataTypes)
 // db.users = require('./userModel') (sequelize, DataTypes)
 
 module.exports = db
+

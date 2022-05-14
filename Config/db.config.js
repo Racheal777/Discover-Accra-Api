@@ -3,10 +3,11 @@ const dotenv = require('dotenv').config()
 
 module.exports = {
     HOST : process.env.Host,
-    USER: process.env.User,
+    USER: process.env.Username,
     PASSWORD: process.env.Password,
     DB: process.env.Database,
     dialect: 'postgres',
+    PORT: 5433,
     pool: {
         max: 5,
         min: 1,
@@ -14,6 +15,8 @@ module.exports = {
         idle: 10000
     }
 }
+
+
 
 // module.exports = {
 //     HOST: "localhost",
