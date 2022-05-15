@@ -16,13 +16,12 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// db.sequelize.sync({ force: false }).then(() => {
-//     console.log("db has been re sync")
-// })
+db.sequelize.sync({ force: false }).then(() => {
+    console.log("db has been re sync")
+})
 
 //listening to server connection
 app.listen(PORT, () => console.log(`Server is connected on ${PORT}`))
-
 
 
 

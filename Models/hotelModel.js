@@ -22,17 +22,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
 
-      images: [
+      images: 
         {
           type: DataTypes.STRING,
         },
-      ],
+      
 
-      amenities: [
+      amenities: 
         {
           type: DataTypes.STRING,
         },
-      ],
+      
     },
     { timestamps: true }
   );

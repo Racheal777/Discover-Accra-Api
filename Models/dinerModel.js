@@ -22,22 +22,22 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
 
-      images: [
+      images: 
         {
           type: DataTypes.STRING,
         },
-      ],
-      openingHours : [
+      
+      openingHours : 
         {
             type: DataTypes.STRING,
           },
-      ],
+      
 
-      menu: [
+      menu: 
         {
           type: DataTypes.STRING,
         },
-      ],
+      
     },
     { timestamps: true }
   );
