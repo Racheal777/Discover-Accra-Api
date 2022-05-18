@@ -41,7 +41,53 @@ db.users = require('./userModel') (sequelize, DataTypes)
 db.hotels = require('./hotelModel') (sequelize, DataTypes)
 db.restaurants = require('./dinerModel') (sequelize, DataTypes)
 db.adventure = require('./adventureModel') (sequelize, DataTypes)
+db.reviews = require('./reviews') (sequelize, DataTypes)
 // db.users = require('./userModel') (sequelize, DataTypes)
+
+
+//relationship
+db.users.hasMany(db.reviews,{
+  as: "review",
+  foreignKey: "userId"
+})
+
+db.reviews.belongsTo(db.users, {
+  as:  "user",
+  foreignKey: "userId"
+})
+
+//hotel relationship
+db.hotels.hasMany(db.reviews,{
+  as: "review",
+  foreignKey: "hotelId"
+})
+
+db.reviews.belongsTo(db.hotels, {
+  as:  "hotel",
+  foreignKey: "hotelId"
+})
+
+//restaurant relationship
+db.restaurants.hasMany(db.reviews,{
+  as: "review",
+  foreignKey: "restaurantId"
+})
+
+db.reviews.belongsTo(db.restaurants, {
+  as:  "restaurant",
+  foreignKey: "restaurantId"
+})
+
+//adventure relationship
+db.adventure.hasMany(db.reviews,{
+  as: "review",
+  foreignKey: "adventureId"
+})
+
+db.reviews.belongsTo(db.adventure, {
+  as:  "restaurant",
+  foreignKey: "adventureId"
+})
 
 module.exports = db
 

@@ -1,6 +1,8 @@
 //Database configuration
 const dotenv = require('dotenv').config()
 
+
+//not in use
 module.exports = {
     HOST : process.env.Host,
     USER: process.env.Username,
