@@ -85,7 +85,7 @@ db.adventure.hasMany(db.reviews,{
 })
 
 db.reviews.belongsTo(db.adventure, {
-  as:  "restaurant",
+  as:  "adventure",
   foreignKey: "adventureId"
 })
 
