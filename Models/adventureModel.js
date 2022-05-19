@@ -24,18 +24,18 @@ module.exports = (sequelize, DataTypes) => {
 
       images: 
         {
-          type: DataTypes.STRING,
+          type: DataTypes.ARRAY(DataTypes.STRING),
         },
       
       openingHours : 
         {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.DATEONLY),
           },
       
 
       activities: 
         {
-          type: DataTypes.STRING,
+          type: DataTypes.ARRAY(DataTypes.STRING),
         },
       
     },

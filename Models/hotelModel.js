@@ -24,13 +24,13 @@ module.exports = (sequelize, DataTypes) => {
 
       images: 
         {
-          type: DataTypes.STRING,
+          type: DataTypes.ARRAY(DataTypes.STRING),
         },
       
 
       amenities: 
         {
-          type: DataTypes.STRING,
+          type: DataTypes.ARRAY(DataTypes.STRING),
         },
       
     },
