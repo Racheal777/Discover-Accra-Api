@@ -44,7 +44,7 @@ db.adventure = require('./adventureModel') (sequelize, DataTypes)
 db.reviews = require('./reviews') (sequelize, DataTypes)
 db.lists = require('./bucketList') (sequelize, DataTypes)
 db.favorites = require('./favorites') (sequelize, DataTypes)
-db.tokens = require('./token') (sequelize, DataTypes)
+// db.tokens = require('./token') (sequelize, DataTypes)
 
 
 //relationship with reviews one to many relationship
@@ -115,15 +115,15 @@ db.lists.belongsTo(db.users, {
 
 
 //relationship of users and token
-db.users.hasOne(db.tokens, {
-  as: 'token',
-  foreignKey:"userId"
-})
+// db.users.hasOne(db.tokens, {
+//   as: 'token',
+//   foreignKey:"userId"
+// })
 
-db.tokens.belongsTo(db.users, {
-  as: 'user',
-  foreignKey:"userId"
-})
+// db.tokens.belongsTo(db.users, {
+//   as: 'user',
+//   foreignKey:"userId"
+// })
 
 
 
