@@ -18,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
 
-        
+        isVerified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+          },
+
     }, {timestamps: true}, )
 
     return User
