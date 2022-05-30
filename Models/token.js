@@ -1,5 +1,6 @@
 
-//user model
+//Token model
+//using references to establish the model that the token is connected to
 module.exports = (sequelize, DataTypes) => {
     const Token = sequelize.define( "token", {
         id: {

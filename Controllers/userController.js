@@ -1,5 +1,4 @@
 //importing modules
-
 const bcrypt = require("bcrypt");
 const db = require("../Models");
 const jwt = require("jsonwebtoken");
@@ -25,14 +24,15 @@ const signup = async (req, res) => {
     const user = await User.create(data);
 
     //if user details is captured
-    //generate token with the user's id and the secretKey in the env file
-    // set cookie with the token generated
+    //create a token with crypto.js
+    
     if (user) {
       let setToken = await Token.create({
         userId: user.id,
         token: crypto.randomBytes(16).toString("hex"),
       });
 
+      //if token is created, send the user a mail 
       if (setToken) {
         //send email to the user
         const Transporter = nodemailer.createTransport({
@@ -43,7 +43,7 @@ const signup = async (req, res) => {
           },
         });
 
-        //message
+        //message containing the user id and the token to help verify their email
         let mailing = {
           from: "no-reply@example.com",
           to: `${email}`,
@@ -53,6 +53,7 @@ const signup = async (req, res) => {
                 http://localhost:8080/api/users/verify-email/${user.id}/${setToken.token} `,
         };
 
+        //sending the email, if error, console log the error else send status of 200
         Transporter.sendMail(mailing, function (err, info) {
           if (err) {
             console.log(err);
@@ -84,13 +85,14 @@ const signup = async (req, res) => {
   }
 };
 
-//verifying the email
+
+//verifying the email of the user
 const verifyEmail = async (req, res) => {
   try {
-    // const { email } = req.body
+    
     const token = req.params.token;
 
-    //find user by token
+    //find user by token using the where clause
     const usertoken = await Token.findOne({
       token,
       where: {
@@ -98,6 +100,8 @@ const verifyEmail = async (req, res) => {
       },
     });
     console.log(usertoken);
+
+    //if token doesnt exist, send status of 400
     if (!usertoken) {
       return res.status(400).send({
         msg: "Your verification link may have expired. Please click on resend for verify your Email.",
@@ -108,6 +112,7 @@ const verifyEmail = async (req, res) => {
       const user = await User.findOne({ where: { id: req.params.id } });
       if (!user) {
         console.log(user);
+
         return res.status(401).send({
           msg: "We were unable to find a user for this verification. Please SignUp!",
         });
@@ -118,7 +123,7 @@ const verifyEmail = async (req, res) => {
           .status(200)
           .send("User has been already verified. Please Login");
 
-        //if user is not verified, change the verified to true
+        //if user is not verified, change the verified to true by updating the field
       } else {
         const updated = await User.update(
           { isVerified: true },
@@ -146,6 +151,7 @@ const verifyEmail = async (req, res) => {
   }
 };
 
+
 //login authentication
 
 const login = async (req, res) => {
@@ -161,9 +167,8 @@ const login = async (req, res) => {
       //
       const isSame = await bcrypt.compare(password, user.password);
 
-      //if password is the same
-      //generate token with the user's id and the secretKey in the env file
-
+      //if password is the same, check if the user is verified,
+      //if verified, generate a token and use it to set cookies for the user
       if (isSame) {
         //check if they are verified
         const verified = user.isVerified;
@@ -172,8 +177,6 @@ const login = async (req, res) => {
             expiresIn: 1 * 24 * 60 * 60 * 1000,
           });
 
-          //if password matches wit the one in the database
-          //go ahead and generate a cookie for the user
           res.cookie("jwt", token, {
             maxAge: 1 * 24 * 60 * 60,
             httpOnly: true,
@@ -196,6 +199,7 @@ const login = async (req, res) => {
   }
 };
 
+//exporting the modules
 module.exports = {
   signup,
   login,

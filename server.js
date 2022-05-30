@@ -4,7 +4,6 @@ const express = require('express')
 const sequelize = require('sequelize')
 const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
-const cors = require('cors')
  const db = require('./Models')
  const userRoutes = require ('./Routes/userRoutes')
  
@@ -24,7 +23,6 @@ app.use(cookieParser())
 db.sequelize.sync({ force: true }).then(() => {
     console.log("db has been re sync")
 })
-
 
 //routes for the user API
 app.use('/api/users', userRoutes)

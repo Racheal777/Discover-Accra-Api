@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
 
+        //isVerified is set to default false once a user signs up
+        //this will change later after email has been verified
         isVerified: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
