@@ -6,10 +6,11 @@ const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
  const db = require('./Models')
  const userRoutes = require ('./Routes/userRoutes')
+ const hotelRoutes = require('./Routes/hotelRoutes')
  
 
 //setting up your port
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8070
 
 //assigning the variable app to express
 const app = express()
@@ -26,6 +27,9 @@ db.sequelize.sync({ force: true }).then(() => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
+
+//hotel routes
+app.use('/api/hotels', hotelRoutes)
 
 //listening to server connection
 app.listen(PORT, () => console.log(`Server is connected on ${PORT}`))

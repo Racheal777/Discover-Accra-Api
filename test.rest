@@ -11,10 +11,21 @@
 
 
 
-POST http://localhost:8080/api/users/login
+# POST http://localhost:8080/api/users/login
+# Content-Type: application/json
+
+# {
+#     "email": "kuranchieracheal@gmail.com",
+#     "password": "coconut20"   
+# }
+
+
+POST http://localhost:8070/api/hotels/addhotel
 Content-Type: application/json
 
 {
-    "email": "kuranchieracheal@gmail.com",
-    "password": "coconut20"   
+    "hotelName": "Mannah beach resort",
+    "website": "kuranchieracheal@gmail.com",
+    "location": "saltpond",
+    "about": "best hotel" 
 }
