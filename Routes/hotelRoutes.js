@@ -3,7 +3,7 @@ const express = require('express')
 const multer = require('multer')
 const hotelController = require('../Controllers/hotelController')
 const { addHotel } = hotelController
-// const upload = require('../fileUploads/fileUpload')
+
 
 const router = express.Router()
 

@@ -6,10 +6,11 @@ const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
  const db = require('./Models')
+ const cors = require('cors')
  const multer = require('multer')
  const userRoutes = require ('./Routes/userRoutes')
  const hotelRoutes = require('./Routes/hotelRoutes')
- 
+ global.__basedir = __dirname;
 
 //setting up your port
 const PORT = process.env.PORT || 8070
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(helmet())
+app.use(cors())
 
 
 

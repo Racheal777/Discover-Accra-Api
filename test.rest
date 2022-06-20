@@ -20,14 +20,21 @@
 # }
 
 
-POST http://localhost:8070/api/hotels/addhotel
+# POST http://localhost:8070/api/hotels/addhotel
+# Content-Type: application/json
+
+# {
+#     "hotelName": "Mannah beach resort",
+#     "website": "kuranchieracheal@gmail.com",
+#     "location": "Takoradi",
+#     "about": "best hotel",
+#     "amenities":["pool" , "bar"],
+#     "images": ["../frontend/public/images/beach3.jpg" , "../frontend/public/images/beach4.jpg"]
+# }
+
+POST http://localhost:8070/api/hotels/upload
 Content-Type: application/json
 
 {
-    "hotelName": "Mannah beach resort",
-    "website": "kuranchieracheal@gmail.com",
-    "location": "Takoradi",
-    "about": "best hotel",
-    "amenities":["pool" , "bar"],
     "images": ["../frontend/public/images/beach3.jpg" , "../frontend/public/images/beach4.jpg"]
 }
