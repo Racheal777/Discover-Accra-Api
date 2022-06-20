@@ -1,5 +1,5 @@
 //importing modules
-
+const multer = require('multer')
 const db = require("../Models");
 const upload = require('../fileUploads/fileUpload')
 
@@ -11,20 +11,25 @@ const Hotel = db.hotels
 //function for the adding a hotel
 
 const addHotel = async (req, res) => {
+    // console.log("req.file",req)
     try {
-       const { hotelName, location, website, amenities, about } = req.body
-
+       const { hotelName, location, website, amenities, about, images } = req.body
+        
        const data = {
            hotelName,
            location,
            website,
            amenities,
            about,
-           images : req.file
+           images
+           
        }
-
+       
        const newHotel = await Hotel.create( data )
        console.log(newHotel)
+       console.log("data",data)
+       console.log("req.body",req.body)
+       console.log("heyyyaaaa", req.file)
 
     //    const saveHotel = await newHotel.create()
     //    console.log(saveHotel)

@@ -26,6 +26,8 @@ Content-Type: application/json
 {
     "hotelName": "Mannah beach resort",
     "website": "kuranchieracheal@gmail.com",
-    "location": "saltpond",
-    "about": "best hotel" 
+    "location": "Takoradi",
+    "about": "best hotel",
+    "amenities":["pool" , "bar"],
+    "images": ["../frontend/public/images/beach3.jpg" , "../frontend/public/images/beach4.jpg"]
 }
