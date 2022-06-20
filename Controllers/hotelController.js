@@ -13,23 +13,25 @@ const Hotel = db.hotels
 const addHotel = async (req, res) => {
     // console.log("req.file",req)
     try {
-       const { hotelName, location, website, amenities, about, images } = req.body
-        
+       const { hotelName, location, website, amenities, about} = req.body
+       
+    
        const data = {
            hotelName,
-           location,
-           website,
-           amenities,
-           about,
-           images
+           location, 
+           website, 
+           amenities, 
+           about, 
+           images: req.file
            
        }
        
-       const newHotel = await Hotel.create( data )
+    //    console.log("upload", upload.array('images'))
+       const newHotel = await Hotel.create(data)
        console.log(newHotel)
        console.log("data",data)
        console.log("req.body",req.body)
-       console.log("heyyyaaaa", req.file)
+       console.log("file", req.file)
 
     //    const saveHotel = await newHotel.create()
     //    console.log(saveHotel)

@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       hotelName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       location: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
 
       website: {
@@ -22,16 +22,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
 
+      amenities: 
+        {
+          type: DataTypes.ARRAY(DataTypes.STRING),
+        },
+
       images: 
         {
           type: DataTypes.ARRAY(DataTypes.STRING),
         },
       
 
-      amenities: 
-        {
-          type: DataTypes.ARRAY(DataTypes.STRING),
-        },
+      
       
     },
     { timestamps: true }
